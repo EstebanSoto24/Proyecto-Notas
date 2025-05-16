@@ -1,0 +1,169 @@
+/* ----------------------------------------------------------------- Basico css ---------------------------------------------------------*/
+body {
+    min-height: 100vh;
+    margin: 0px;
+    background-image: url(../assets/img/fondo.jpg);
+    z-index: 1;
+}
+body::before {
+    opacity: 0.2;
+}
+h1 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    margin: 0px;
+    padding: 10px 0;
+    font-style: italic;
+    font-weight: 900;
+    color: darkcyan;
+    margin-top: 5px;
+    font-size: 40px;
+}
+nav {
+    position: fixed;
+    left: 0;
+    width: 70px;
+    background-color: rgb(144, 151, 255);
+    height: 50%;
+    z-index: 15;
+    border-radius: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+    box-shadow:
+    0 0 10px #8ef3fc,  /* Brillo externo */
+    0 0 20px #95faff,  /* Brillo más difuso */
+    0 0 30px rgba(0, 240, 255, 0.4), /* Efecto neón */
+    inset 0 0 10px rgba(0, 240, 255, 0.5);
+}
+nav section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+button {
+    width: 35px;
+    margin-top: 20px;
+}
+
+footer {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+footer div{
+    color: darkcyan;
+}
+
+a {
+    text-decoration: none;
+    color: darkcyan;
+}
+
+/* -------------------------------------------------------- CONTENEDOR PRINCIPAL -------------------------------------------------*/
+main {
+    margin-left: 120px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+main div{
+    width: 420px;
+    height: 300px;
+    margin: 24px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+/* --------------------------------- Nota ------------------------------*/
+.textoNota {
+    position: relative;
+    margin: 15px;
+    width: 380px;
+    height: 220px;
+    overflow: scroll;
+}
+
+/* ---------------------------------------------------------- BOTONES ---------------------------------------------------- */
+#botonLogin {
+    padding: 0px;
+    height: 35px;
+    margin-top: 50px;
+    background-color: antiquewhite;
+    box-shadow: 0px 0px 10px 3px;
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 5px;
+    color: darkcyan;
+}
+
+button {
+    width: 50px;
+    height: 20px;
+}
+
+.botonesPrincipales {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 23px;
+    text-align: center;
+}
+
+.botonesPrincipales:hover {
+    height: 35px;
+    width: 35px;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 1px;
+}
+
+#botonPrincipal1 {
+    background-color: lightcoral;
+}
+#botonPrincipal2 {
+    background-color: lightblue;
+}
+#botonPrincipal3 {
+    background-color: lightyellow;
+}
+
+.botonesNota {
+    display: flex;
+    justify-content: space-between;    
+}
+
+.borrar {
+    margin: 0px;
+    width: 50px;
+    height: 30px;
+    margin-left: 40px; 
+    background-color: transparent;
+    border: none;
+}
+
+.guardar {
+    margin: 0px;
+    width: 50px;
+    height: 30px;
+    margin-right: 40px;
+    background-color: transparent;
+    border: none;
+}
+
+.descargar {
+    margin: 0px;
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
