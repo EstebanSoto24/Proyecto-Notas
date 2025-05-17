@@ -99,7 +99,7 @@ function descargarNota() {
 }
 
 function actualizarBotones(){
-    const parrafos = document.getElementById("contenedor-main").getElementsByTagName("button");
+    const parrafos = document.getElementById("contenedor-main").querySelectorAll(".borrar");
     for (let i = 0; i < parrafos.length; i++) {
         parrafos[i].addEventListener('click', function(e) {
             identificador = e.currentTarget.id;
