@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas - Esteban Soto</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" id="estilos1" href="css/style.css">
     <script defer src="js/script.js"></script>
 </head>
 <body>
@@ -15,16 +15,44 @@
     <!--Svg de guardar -->
     <svg style="display: none"><symbol id="svgGuardar"><svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-download"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M12 17v-6" /><path d="M9.5 14.5l2.5 2.5l2.5 -2.5" /></svg></symbol></svg>
     <!--Boton Login-->
-    <svg style="display:none;"><symbol id="Login"><svg  xmlns="http://www.w3.org/2000/svg"  width="26"  height="26"  viewBox="-3 2 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></symbol></svg>
+    <svg style="display: none;"><symbol id="Login"><svg  xmlns="http://www.w3.org/2000/svg"  width="26"  height="26"  viewBox="-3 2 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-database"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6m-8 0a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg></symbol></svg>
     <!--Boton Settings-->
-    <svg style="display:none;"><symbol id="buttonSettings"><svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="-1 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg></symbol></svg>
+    <svg style="display: none;"><symbol id="buttonSettings"><svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="-1 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg></symbol></svg>
     <!--Boton Logout-->
-    <svg style="display:none;"><symbol id="Logout"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="-5 0 30 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg></symbol></svg>
+    <svg style="display: none;"><symbol id="Logout"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="-5 0 30 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-logout"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" /></svg></symbol></svg>
     <!--Github-->
     <svg style="display: none;"><symbol id="Github"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg></symbol></svg>
     <!--Infojobs-->
-    <svg><symbol id="Infojobs"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-square-rounded"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9h.01" /><path d="M11 12h1v4h1" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg></symbol></svg>
-
+    <svg style="display: none;"><symbol id="Infojobs"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-square-rounded"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9h.01" /><path d="M11 12h1v4h1" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg></symbol></svg>
+    <!---Cerrar-->
+    <svg style="display: none;"><symbol id="cerrar"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrows-minimize"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 9l4 0l0 -4" /><path d="M3 3l6 6" /><path d="M5 15l4 0l0 4" /><path d="M3 21l6 -6" /><path d="M19 9l-4 0l0 -4" /><path d="M15 9l6 -6" /><path d="M19 15l-4 0l0 4" /><path d="M15 15l6 6" /></svg></symbol></svg>
+    <div id="ventanaSettings" popover>
+        <section>
+            <button id="buttonCerrarSettings" popovertarget="ventanaSettings" popovertargetaction="hide">&times;</button>
+            <h2>Settings</h2>
+            <form id="formSettings" method="get">
+                <label for="tipoLetra">Tipo de letra</label>
+                <select id="tipoLetra">
+                    <option value="arial" name="night">Arial</option>
+                    <option value="sans-serif" name="day">Sans-serif</option>
+                </select><br>
+                <label for="tamannoLetra">Tamaño de letra</label>
+                <select id="tamannoLetra">
+                    <option value="12px" name="tamannoLetra">12px</option>
+                    <option value="14px" name="tamannoLetra">14px</option>
+                    <option value="16px" name="tamannoLetra">16px</option>
+                    <option value="20px" name="tamannoLetra">20px</option>
+                    <option value="24px" name="tamannoLetra">24px</option>
+                </select>
+                <!-- Proximas Actualizaciones
+                <label id="temas">Tema</label>
+                <input type="radio" name="temas" value="nightMode">
+                <input type="radio" name="temas" value="lightMode">
+                -->
+                <button type="submit" id="buttonGuardarSettings">Save</button>
+            </form>
+        </section>
+    </div>
     <header>
         <h1>Notas - Esteban Soto</h1>
         <nav>
@@ -35,7 +63,7 @@
                 <button class="botonesPrincipales" id="botonPrincipal4">+</button>
                 <button class="botonesPrincipales" id="botonPrincipal5">+</button>
                 <button class="botonesConfiguracion" id="botonLogin"><svg><use href="#Login"></use></svg></button>
-                <button class="botonesConfiguracion" id="botonSettings"><svg><use href="#buttonSettings"></use></svg></button>
+                <button popovertarget="ventanaSettings" class="botonesConfiguracion" id="botonSettings"><svg><use href="#buttonSettings"></use></svg></button>
                 <button class="botonesConfiguracion" id="botonLogout"><svg><use href="#Logout"></use></svg></button>
             </section>
         </nav>
@@ -44,7 +72,7 @@
     <main id="contenedor-main">
         <div class="notas, color1" id="nota1">
             <form method="post">
-                <input type="textarea" class="textoNota">
+                <input id="textoNota" type="textarea" class="textoNota">
             </form>
             <section class="botonesNota">
                 <button class="borrar" id="borrar1"><svg><use href="#svgBorrar"></use></svg></button>
@@ -55,6 +83,7 @@
     </main>
 
     <footer>
+        <section>
             <div>
                 <p>Enjoy</p>
             </div>
@@ -63,10 +92,11 @@
             </div>
             <div>
                 <ul id="enlaces">
-                    <a href="www.github.com"><svg><use href="#Github"></use></svg></a>
+                    <a href="https://github.com/EstebanSoto24/Proyecto-Notas"><svg><use href="#Github"></use></svg></a>
                     <a href="www.infojobs.com"><svg><use href="#Infojobs"></use></svg></a>
                 </ul>
             </div>
+        </section>
     </footer>
 </body>
 </html>

@@ -1,3 +1,4 @@
+/* Creamos funcion para agregar una nota */
 function agregarNota(e) {
     /* Configuracion de Identificadores para las notas*/
     let numerodiv = document.querySelectorAll("main div");
@@ -44,8 +45,6 @@ function agregarNota(e) {
     }
 
     /* Asignamos y creamos los atributos de los elementos */
-    div.setAttribute("class", "notas");
-    div.setAttribute("class", "${classcolor}");
     div.classList.add('notas');
     div.classList.add(`${classcolor}`);
     div.setAttribute("id", `nota${idNuevaNota}`);
@@ -53,15 +52,12 @@ function agregarNota(e) {
     input.setAttribute("class","textoNota");
     input.classList.add('textoNota');
     input.setAttribute("type", "textarea");
-    section.setAttribute("class", "botonesNota");
+    input.setAttribute("id", "areaEscribir");
     section.classList.add('botonesNota');
-    button1.setAttribute("class", "borrar");
     button1.setAttribute("id", `borrar${idNuevaNota}`);
     button1.classList.add('borrar');
-    button2.setAttribute("class", "descargar");
     button2.setAttribute("id", `descargar${idNuevaNota}`);
     button2.classList.add('descargar');
-    button3.setAttribute("class", "guardar");
     button3.setAttribute("id", `guardar${idNuevaNota}`);
     button3.classList.add('guardar');
     usebutton1.setAttribute("href", "#svgBorrar");
@@ -84,61 +80,99 @@ function agregarNota(e) {
     main.appendChild(div);
 
 }
-
-function borrarNota() {
+/* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
+function borrarNota(identificador) {
     let padreTotal = document.getElementById(identificador).parentNode.parentNode;
     padreTotal.remove();
 }
-
+/* Creamos función para guardar la nota en la base de datos si hemos iniciado sesion*/
 function guardarNota() {
 
 }
-
+/* Creamos funcion para descargar nuestra nota en archivo txt */
 function descargarNota() {
 
 }
-
-function actualizarBotones(){
+/* Creamos funcion para actualizar todos los botones de la pagina */
+function actualizarListenersBotones(){
     const parrafos = document.getElementById("contenedor-main").querySelectorAll(".borrar");
     for (let i = 0; i < parrafos.length; i++) {
         parrafos[i].addEventListener('click', function(e) {
             identificador = e.currentTarget.id;
-            borrarNota();
+            borrarNota(identificador);
         });
     }
 }
-/* Declaración de variables */
-let identificador;
+function cambiarTextarea(){
+    let textareas = document.getElementsByTagName('textoNota');
+    for (let i in textareas){
+        textareas[i].setAttribute("style", `font-size: ${tamannoLetra}; font-family: ${tipoLetra}`);
+    }
+};
+function cambiosRealizados(){
+    /* Declaramos las etiquetas para crear el popup */
+    let divCambio = document.createElement("div");
+    let pCambio = document.createElement("p");
+    let textoCambio = document.createTextNode("Cambios Realizados");
 
+    /* Creamos Atributos */
+    divCambio.setAttribute("id", 'cambiosHechos');
+
+    /* Hacemos las conexiones y lo agregamos al html */
+    pCambio.appendChild(textoCambio);
+    divCambio.appendChild(pCambio);
+    document.body.appendChild(divCambio);
+
+    /* Aqui esperamos un momento para que se muestre el popup y lo borramos */
+    setTimeout(() => document.getElementById('cambiosHechos').remove(), 3000);
+
+}
+
+
+/* Declaración de variables */
+let ventana;
+const ventanaSettings = document.getElementById("ventanaSettings");
+let tamannoLetra = '12px';
+let tipoLetra = 'arial';
 
 /* Llamamos al actualizador de botones una vez para que se carguen los botones. */
-actualizarBotones();
+actualizarListenersBotones();
+/* Llamamos al cambiarTammanoLetra_tipoLetra para tener un tipo y tamaño incial y por defecto*/
+
 
 document.getElementById("botonPrincipal1").addEventListener("click", function(e) {
     color = 1;
     agregarNota();
-    actualizarBotones();
+    actualizarListenersBotones();
 });
 
 document.getElementById("botonPrincipal2").addEventListener("click", function(e) {
     color = 2;
     agregarNota();
-    actualizarBotones();
+    actualizarListenersBotones();
 });
 document.getElementById("botonPrincipal3").addEventListener("click", function(e) {
     color = 3;
     agregarNota();
-    actualizarBotones();
+    actualizarListenersBotones();
 });
 document.getElementById("botonPrincipal4").addEventListener("click", function(e) {
     color = 4;
     agregarNota();
-    actualizarBotones();
+    actualizarListenersBotones();
 });
 document.getElementById("botonPrincipal5").addEventListener("click", function(e) {
     color = 5;
     agregarNota();
-    actualizarBotones();
+    actualizarListenersBotones();
 });
 
+/* Obtenemos todo el formulario de Settings */
 
+document.getElementById("formSettings").addEventListener("submit", function(e) {
+    e.preventDefault();
+    tipoLetra = document.getElementById('tipoLetra').value;
+    tamannoLetra = document.getElementById('tamannoLetra').value;
+    cambiosRealizados();
+
+});
