@@ -13,35 +13,35 @@ h1 {
     width: 100%;
     text-align: center;
     z-index: 10;
-    margin: 0px;
+    margin-top: -10px;
     padding: 10px 0;
     font-style: italic;
     font-weight: 900;
     color: darkcyan;
-    margin-top: 5px;
     font-size: 40px;
 }
 nav {
     position: fixed;
     left: 0;
     width: 70px;
-    background-color: rgb(144, 151, 255);
+    background-color: rgb(97, 124, 255);
     height: 50%;
     z-index: 15;
+    border: 1px solid gray;
     border-radius: 15px;
     margin-left: 20px;
     margin-top: 20px;
     box-shadow:
-    0 0 10px #8ef3fc,  /* Brillo externo */
-    0 0 20px #95faff,  /* Brillo más difuso */
-    0 0 30px rgba(0, 240, 255, 0.4), /* Efecto neón */
-    inset 0 0 10px rgba(0, 240, 255, 0.5);
+    0 0 10px #ffffff,  /* Brillo externo */
+    0 0 20px #ffffff,  /* Brillo más difuso */
+    0 0 30px rgb(255, 255, 255), /* Efecto neón */
+    inset 0 0 10px rgb(255, 255, 255);
 }
 nav section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 button {
     width: 35px;
@@ -68,41 +68,93 @@ a {
     color: darkcyan;
 }
 
+svg {
+    width: 35px;
+    height: 35px;;
+}
+
+
 /* -------------------------------------------------------- CONTENEDOR PRINCIPAL -------------------------------------------------*/
 main {
-    margin-left: 120px;
+    margin-left: 110px;
     width: 90%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 main div{
-    width: 420px;
+    width: 370px;
     height: 300px;
     margin: 24px;
     border: 1px solid black;
     border-radius: 10px;
 }
 
+.color1 {
+    background-color: lightcoral;
+    box-shadow: 0px 0px 10px 3px lightcoral;
+}
+
+.color2 {
+    background-color: lightblue;
+    box-shadow: 0px 0px 10px 3px lightblue;
+}
+
+.color3 {
+    background-color: lightyellow;
+    box-shadow: 0px 0px 10px 3px lightyellow;
+}
+.color4 {
+    background-color: lightsalmon;
+    box-shadow: 0px 0px 10px 3px lightsalmon;
+}
+.color5 {
+    background-color: lightseagreen;
+    box-shadow: 0px 0px 10px 3px lightseagreen;
+}
+
 /* --------------------------------- Nota ------------------------------*/
 .textoNota {
     position: relative;
     margin: 15px;
-    width: 380px;
+    width: 330px;
     height: 220px;
     overflow: scroll;
+    font-size: 20px;
 }
 
 /* ---------------------------------------------------------- BOTONES ---------------------------------------------------- */
 #botonLogin {
     padding: 0px;
-    height: 35px;
-    margin-top: 50px;
-    background-color: antiquewhite;
-    box-shadow: 0px 0px 10px 3px;
-    font-weight: 900;
-    font-size: 15px;
-    border-radius: 5px;
-    color: darkcyan;
+    background-color: transparent;
+    border:0px;
+    margin-top: 65px;
+}
+
+#botonLogin:hover {
+    color: black;
+}
+
+#botonSettings {
+    background-color: transparent;
+    border: 0px;
+}
+
+#botonSettings:hover {
+    color: black;
+}
+
+#botonLogout {
+    background-color: transparent;
+    border: 0px;
+}
+
+#botonLogout:hover {
+    color: black;
+}
+
+.botonesConfiguracion {
+    color: white;
 }
 
 button {
@@ -120,11 +172,9 @@ button {
 }
 
 .botonesPrincipales:hover {
-    height: 35px;
-    width: 35px;
     border: 2px solid black;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px 1px;
+    box-shadow: 0px 0px 10px 1px white;
 }
 
 #botonPrincipal1 {
@@ -136,10 +186,16 @@ button {
 #botonPrincipal3 {
     background-color: lightyellow;
 }
+#botonPrincipal4 {
+    background-color: lightsalmon;
+}
+#botonPrincipal5 {
+    background-color: lightseagreen;
+}
 
 .botonesNota {
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 .borrar {
@@ -151,6 +207,22 @@ button {
     border: none;
 }
 
+.borrar:hover {
+    color: red;
+}
+
+.descargar {
+    margin: 0px;
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.descargar:hover {
+    color: blue;
+}
+
 .guardar {
     margin: 0px;
     width: 50px;
@@ -160,10 +232,6 @@ button {
     border: none;
 }
 
-.descargar {
-    margin: 0px;
-    width: 50px;
-    height: 30px;
-    background-color: transparent;
-    border: none;
+.guardar:hover {
+    color: green;
 }
