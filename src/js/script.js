@@ -1,7 +1,20 @@
+
+/* Creamos función para actualizar y agregar los quill a las nuevas notas */
+/*
+const quillEditors = {}
+function actualizarQuill(cuantasnotas){
+    for (let i = 0; i < cuantasnotas; i++){
+        const idContainer = `#textoNotaId${i}`;
+        quillEditors[`quill${i}`] = new Quill(idContainer, {theme: 'snow'});
+    }
+}
+    */
+const quill = new Quill('#editor');
+
 /* Creamos funcion para agregar una nota */
 function agregarNota(e) {
     /* Configuracion de Identificadores para las notas*/
-    let numerodiv = document.querySelectorAll("main div");
+    let numerodiv = document.querySelectorAll("main>div");
 
     let notas = numerodiv.length;
 
@@ -10,9 +23,10 @@ function agregarNota(e) {
     const svgNS = "http://www.w3.org/2000/svg";
     /* Creamos las etiquetas */
     let main = document.getElementById("contenedor-main");
-    let div = document.createElement("div");
-    let form = document.createElement("form");
-    let input = document.createElement("input");
+    let tarjeta = document.createElement("div");
+    let div = document.createElement("div");                            
+    let contenido = document.createTextNode("Hello World!!!");
+    let texto = document.createElement("p") ;
     let section = document.createElement("section");
     let button1 = document.createElement("button");
     let button2 = document.createElement("button");
@@ -29,30 +43,27 @@ function agregarNota(e) {
     switch (color){
         case 1:
             classcolor = "color1";
-        break;
+            break;
         case 2:
             classcolor = "color2";
-        break;
+            break;
         case 3:
             classcolor = "color3";
-        break;
+            break;
         case 4:
             classcolor = "color4";
-        break;
+            break;
         case 5:
             classcolor = "color5";
-        break;
+            break;
     }
 
     /* Asignamos y creamos los atributos de los elementos */
-    div.classList.add('notas');
-    div.classList.add(`${classcolor}`);
-    div.setAttribute("id", `nota${idNuevaNota}`);
-    form.setAttribute("method", "post");
-    input.setAttribute("class","textoNota");
-    input.classList.add('textoNota');
-    input.setAttribute("type", "textarea");
-    input.setAttribute("id", "areaEscribir");
+    tarjeta.classList.add('notas');
+    tarjeta.classList.add(`${classcolor}`);
+    tarjeta.setAttribute("id", `nota${idNuevaNota}`);
+    div.classList.add('textoNota');
+    div.id = `textoNotaId${idNuevaNota}`;
     section.classList.add('botonesNota');
     button1.setAttribute("id", `borrar${idNuevaNota}`);
     button1.classList.add('borrar');
@@ -74,11 +85,14 @@ function agregarNota(e) {
     section.appendChild(button1);
     section.appendChild(button2);
     section.appendChild(button3);
-    form.appendChild(input);
-    div.appendChild(form);
-    div.appendChild(section);
-    main.appendChild(div);
+    texto.appendChild(contenido);
+    div.appendChild(texto);
+    tarjeta.appendChild(div);
+    tarjeta.appendChild(section);
+    main.appendChild(tarjeta);
 
+    /* Llamamos a la función de actualizar Quill para hacerlo en las notas nuevas */
+    actualizarQuill(idNuevaNota);
 }
 /* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
 function borrarNota(identificador) {
@@ -139,33 +153,14 @@ let tipoLetra = 'arial';
 actualizarListenersBotones();
 /* Llamamos al cambiarTammanoLetra_tipoLetra para tener un tipo y tamaño incial y por defecto*/
 
-
-document.getElementById("botonPrincipal1").addEventListener("click", function(e) {
-    color = 1;
-    agregarNota();
-    actualizarListenersBotones();
-});
-
-document.getElementById("botonPrincipal2").addEventListener("click", function(e) {
-    color = 2;
-    agregarNota();
-    actualizarListenersBotones();
-});
-document.getElementById("botonPrincipal3").addEventListener("click", function(e) {
-    color = 3;
-    agregarNota();
-    actualizarListenersBotones();
-});
-document.getElementById("botonPrincipal4").addEventListener("click", function(e) {
-    color = 4;
-    agregarNota();
-    actualizarListenersBotones();
-});
-document.getElementById("botonPrincipal5").addEventListener("click", function(e) {
-    color = 5;
-    agregarNota();
-    actualizarListenersBotones();
-});
+/* Creamos los eventos para crear las notas de distintos colores. */
+for (let i = 1; i <= 5; i++){
+    document.getElementById(`botonPrincipal${i}`).addEventListener("click", function(e) {
+        color = i;
+        agregarNota();
+        actualizarListenersBotones();
+    });
+}
 
 /* Obtenemos todo el formulario de Settings */
 
@@ -174,5 +169,4 @@ document.getElementById("formSettings").addEventListener("submit", function(e) {
     tipoLetra = document.getElementById('tipoLetra').value;
     tamannoLetra = document.getElementById('tamannoLetra').value;
     cambiosRealizados();
-
 });

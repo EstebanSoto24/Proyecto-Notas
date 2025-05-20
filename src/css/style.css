@@ -121,17 +121,15 @@ main div{
 
 /* --------------------------------- Nota ------------------------------*/
 .textoNota {
-    position: relative;
-    margin: 15px;
-    width: 330px;
-    height: 220px;
-    overflow: scroll;
-    resize: none;
-    border-radius: 7px;
+    background-color: white;
+    width: 320px;
+    height: 200px;
+    border-radius: 10px;
 }
 
-.hola {
-    font-size: 40px;
+.textoNota p {
+    font-size: 20px;
+    padding: 10px;
 }
 
 .color1 .textoNota:focus {

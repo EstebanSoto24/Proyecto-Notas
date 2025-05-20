@@ -6,6 +6,10 @@
     <title>Notas - Esteban Soto</title>
     <link rel="stylesheet" id="estilos1" href="css/style.css">
     <script defer src="js/script.js"></script>
+    <!--Incluimos el css de QuillJS -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+    <!--Incluimos la libreria de QuillJS -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 </head>
 <body>
     <!--Svg de borrar -->
@@ -70,10 +74,10 @@
     </header>
 
     <main id="contenedor-main">
-        <div class="notas, color1" id="nota1">
-            <form method="post">
-                <input id="textoNota" type="textarea" class="textoNota">
-            </form>
+        <div class="notas color1" id="nota1">
+            <div class="textoNota" id="editor">
+                <p>Hello World !!!</p>
+            </div>
             <section class="botonesNota">
                 <button class="borrar" id="borrar1"><svg><use href="#svgBorrar"></use></svg></button>
                 <button class="descargar" id="descargar"><svg><use href="#svgDescargar"></use></svg></button>
