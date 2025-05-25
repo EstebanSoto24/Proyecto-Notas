@@ -28,9 +28,13 @@ function agregarNota(e) {
     let buttonEditor1 = document.createElement("button");
     let buttonEditor2 = document.createElement("button");
     let buttonEditor3 = document.createElement("button");
+    let buttonEditor4 = document.createElement("button");
+    let buttonEditor5 = document.createElement("button");
     let imgButtonEditor1 = document.createElement("img");
     let imgButtonEditor2 = document.createElement("img");
     let imgButtonEditor3 = document.createElement("img");
+    let imgButtonEditor4 = document.createElement("img");
+    let imgButtonEditor5 = document.createElement("img");
     /* Tarjeta */
     let tarjeta = document.createElement("div");
     /* textarea Editable */
@@ -84,6 +88,11 @@ function agregarNota(e) {
     imgButtonEditor2.src = "assets/svg/italic.svg";
     buttonEditor3.classList.add('ql-underline');
     imgButtonEditor3.src = "assets/svg/underline.svg";
+    buttonEditor4.classList.add('ql-align');
+    imgButtonEditor4.src = "assets/svg/align.svg";
+    buttonEditor4.setAttribute("onclick", "alignTexto(this)");
+    buttonEditor5.classList.add('ql-list');
+    imgButtonEditor5.src = "assets/svg/list.svg";
     div.classList.add('textoNota');
     div.classList.add('ql-container');
     div.id = `editor${idNuevaNota}`;
@@ -107,9 +116,13 @@ function agregarNota(e) {
     buttonEditor1.appendChild(imgButtonEditor1);
     buttonEditor2.appendChild(imgButtonEditor2);
     buttonEditor3.appendChild(imgButtonEditor3);
+    buttonEditor4.appendChild(imgButtonEditor4);
+    buttonEditor5.appendChild(imgButtonEditor5);
     toolbar.appendChild(buttonEditor1);
     toolbar.appendChild(buttonEditor2);
     toolbar.appendChild(buttonEditor3);
+    toolbar.appendChild(buttonEditor4);
+    toolbar.appendChild(buttonEditor5);
     /* Botones Nota */
     svgbutton1.appendChild(usebutton1);
     svgbutton2.appendChild(usebutton2);
@@ -189,9 +202,23 @@ function actualizarQuill(){
         });
     }
 }
+function alignTexto(button){
+    let cambioAlign = button.parentNode.parentNode.getElementsByTagName("div")[1];
+    if (align == 0){
+        cambioAlign.setAttribute("style", "text-align: center");
+        align = 1;
+    }else if (align == 1) {
+        cambioAlign.setAttribute("style", "text-align: right");
+        align = 2;
+    }else{
+        cambioAlign.setAttribute("style", "text-align: left");
+        align = 0;
+    }
+}
 
 /* Declaración de variables */
 let ventana;
+let align = 0;
 const ventanaSettings = document.getElementById("ventanaSettings");
 let tamannoLetra = '12px';
 let tipoLetra = 'arial';
@@ -199,8 +226,6 @@ let colorLetra = 'red';
 
 /* Llamamos al actualizador de botones una vez para que se carguen los botones. */
 actualizarListenersBotones();
-/* Llamamos al cambiarTammanoLetra_tipoLetra para tener un tipo y tamaño incial y por defecto*/
-
 /* Llamamos a actualizarQuill() para que agrege todos los editores necesarios */
 actualizarQuill();
 
