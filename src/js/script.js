@@ -1,15 +1,4 @@
 
-/* Creamos función para actualizar y agregar los quill a las nuevas notas */
-/*
-const quillEditors = {}
-function actualizarQuill(cuantasnotas){
-    for (let i = 0; i < cuantasnotas; i++){
-        const idContainer = `#textoNotaId${i}`;
-        quillEditors[`quill${i}`] = new Quill(idContainer, {theme: 'snow'});
-    }
-}
-    */
-
 /* Creamos funcion para agregar una nota */
 function agregarNota(e) {
     /* Configuracion de Identificadores para las notas*/
@@ -146,17 +135,39 @@ function agregarNota(e) {
     actualizarQuill();
 }
 /* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
-function borrarNota(identificador) {
-    let padreTotal = document.getElementById(identificador).parentNode.parentNode;
-    padreTotal.remove();
+function borrarNota(id) {
+    let padreTotal = document.getElementById(id).parentNode.parentNode.remove();
 }
 /* Creamos función para guardar la nota en la base de datos si hemos iniciado sesion*/
 function guardarNota() {
 
 }
 /* Creamos funcion para descargar nuestra nota en archivo txt */
-function descargarNota() {
+function descargarNota(id) {
+    let tarjeta = document.getElementById(id).parentNode.parentNode;
+    let contenidoHtml = tarjeta.getElementsByTagName("div")[1].innerHTML;
+    /* Quitamos contenido editable */
+    let htmlCompleto = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Documento Descargado</title>
+        </head>
+            <body style="color: ${colorLetra}; font-size: ${tamannoLetra}; font-family: ${tipoLetra}">
+                ${contenidoHtml}
+            </body>
+        </html>`;
 
+    let blob = new Blob([htmlCompleto], { type: "text/html" });
+
+            let enlace = document.createElement("a");
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "archivo.html";
+            enlace.click();
+
+            URL.revokeObjectURL(enlace.href);
 }
 /* Creamos funcion para actualizar todos los botones de la pagina */
 function actualizarListenersBotones(){
@@ -165,6 +176,13 @@ function actualizarListenersBotones(){
         parrafos[i].addEventListener('click', function(e) {
             identificador = e.currentTarget.id;
             borrarNota(identificador);
+        });
+    }
+    const parrafosDescargar = document.getElementById("contenedor-main").querySelectorAll(".descargar");
+    for (let i = 0; i < parrafosDescargar.length; i++){
+        parrafosDescargar[i].addEventListener('click', function(e) {
+            let identificador = e.currentTarget.id;
+            descargarNota(identificador);
         });
     }
 }
@@ -222,7 +240,7 @@ let align = 0;
 const ventanaSettings = document.getElementById("ventanaSettings");
 let tamannoLetra = '12px';
 let tipoLetra = 'arial';
-let colorLetra = 'red';
+let colorLetra;
 
 /* Llamamos al actualizador de botones una vez para que se carguen los botones. */
 actualizarListenersBotones();
