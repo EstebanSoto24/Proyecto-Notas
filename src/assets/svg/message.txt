@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPASITO FINAL DOM</title>
+    <script>
+        let num = 0
+        function enviar() {
+            //Guardar nombre
+            let nombre = document.getElementById("nombre").value
+
+            //Material
+
+            let material = document.getElementById("material").value
+
+
+            //Opciones
+
+            let opciones = document.getElementsByName("dimensiones")
+            let opcionsi 
+            for (i in opciones){
+                if (opciones[i].checked){
+                    opcionsi = opciones[i].value
+                }
+            }
+            
+            //Coger comentarios
+
+            let comentarioo = document.getElementById("textito").value
+            
+           
+            //Creación de mensaje
+
+            let nodo = document.createElement("p")
+            let texto = (`${nombre} ha pedido una caja de ${material} con unas dimensiones ${opcionsi}. ${comentarioo}`)
+            let contenido = document.createTextNode(texto)
+
+            
+            nodo.id="resultado"
+            frase = document.getElementById("resultado")
+
+            
+
+            if (num == 0){
+            nodo.appendChild(contenido)
+            document.body.appendChild(nodo)
+            num = num + 1
+            }else {
+             frase.innerHTML = texto
+            }
+           
+            
+
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <form>
+        <label for="nombre">Nombre del Cliente:</label> <br><input id="nombre" type="text">
+        <br><br>
+        <label for="material">Material de la caja</label> <br>
+        <select id="material">
+            <option value="plástico">Plástico</option>
+            <option value="cartón">Cartón</option>
+            <option value="metal">Metal</option>
+        </select>
+
+        <br><br><br>
+
+        <label>Seleccione unas dimensiones para la caja:</label>
+        <br><br>
+        <input type="radio" name="dimensiones" value="diminutas" id="1"><label for="1">Diminutas</label> <br>
+        <input type="radio" name="dimensiones" value="medianas" id="2"><label for="2">Medianas</label> <br>
+        <input type="radio" name="dimensiones" value="grande" id="3"><label for="3">Grandes</label>
+
+        <br><br><br>
+
+
+        <label for="textito">Comentarios</label> <br>
+        <textarea id="textito"></textarea> <br> <br>
+        <input type="button" onclick="enviar()" value="Enviar" id="boton">
+    </form>
+    
+</body>
+</html>

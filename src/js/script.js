@@ -6,7 +6,7 @@ function agregarNota(e) {
 
     let notas = numerodiv.length;
 
-    let idNuevaNota = notas + 1;
+    let idNuevaNota = notas;
 
     const svgNS = "http://www.w3.org/2000/svg";
     /* Creamos las etiquetas */
@@ -133,18 +133,28 @@ function agregarNota(e) {
 
     /* Llamamos a la función de actualizar Quill para hacerlo en las notas nuevas */
     actualizarQuill();
+    actualizarListenersBotones();
 }
 /* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
 function borrarNota(id) {
-    let padreTotal = document.getElementById(id).parentNode.parentNode.remove();
+    let padre = document.getElementById(id).parentNode.parentNode;
+    let idEditor = padre.getElementsByTagName("div")[1].id;
+    let quill = new Quill(`#${idEditor}`);
+    quill.destroy;
+    padre.remove();
+
+    actualizarIds();
+    actualizarQuill();
+    actualizarListenersBotones();
+
 }
 /* Creamos función para guardar la nota en la base de datos si hemos iniciado sesion*/
 function guardarNota() {
 
 }
 /* Creamos funcion para descargar nuestra nota en archivo txt */
-function descargarNota(id) {
-    let tarjeta = document.getElementById(id).parentNode.parentNode;
+function descargarNota(identificador) {
+    let tarjeta = document.getElementById(identificador).parentNode.parentNode;
     let contenidoHtml = tarjeta.getElementsByTagName("div")[1].innerHTML;
     /* Quitamos contenido editable */
     let htmlCompleto = `
@@ -171,18 +181,24 @@ function descargarNota(id) {
 }
 /* Creamos funcion para actualizar todos los botones de la pagina */
 function actualizarListenersBotones(){
-    const parrafos = document.getElementById("contenedor-main").querySelectorAll(".borrar");
-    for (let i = 0; i < parrafos.length; i++) {
-        parrafos[i].addEventListener('click', function(e) {
+    let cont = document.querySelectorAll("main>div").length;
+    for (let i = 0; i < cont; i++){
+        document.getElementById(`borrar${i}`).addEventListener('click', function(e) {
             identificador = e.currentTarget.id;
             borrarNota(identificador);
         });
     }
-    const parrafosDescargar = document.getElementById("contenedor-main").querySelectorAll(".descargar");
-    for (let i = 0; i < parrafosDescargar.length; i++){
-        parrafosDescargar[i].addEventListener('click', function(e) {
-            let identificador = e.currentTarget.id;
+    for (let i = 0; i < cont; i++){
+        document.getElementById(`descargar${i}`).addEventListener('click', function(e) {
+            identificador = e.currentTarget.id;
             descargarNota(identificador);
+        });
+    }
+
+    for (let i = 0; i < cont; i++){
+        document.getElementById(`guardar${i}`).addEventListener('click', function(e) {
+            identificador = e.currentTarget.id;
+            guardarNota(identificador);
         });
     }
 }
@@ -210,10 +226,19 @@ function cambiosRealizados(){
     setTimeout(() => document.getElementById('cambiosHechos').remove(), 3000);
 
 }
+function actualizarIds(){
+    let tarjetas = document.querySelectorAll("main>div");
+    for (let i = 0; i < tarjetas.length; i++){
+        tarjetas[i].id = `nota${i}`;
+        tarjetas[i].getElementsByTagName("div")[0].id = `toolbar${i}`;
+        tarjetas[i].getElementsByTagName("div")[1].id = `editor${i}`;
+        let section = tarjetas[i].getElementsByClassName("botonesNota")[0];
+    }
+}
 function actualizarQuill(){
-    let cuantos = document.querySelectorAll("#contenedor-main>div").length;
-    for (let i = 1; i <= cuantos; i++){
-        const quill = new Quill(`#editor${i}`, {
+    let cuantos = document.querySelectorAll("main>div").length;
+    for (let i = 0; i < cuantos; i++){
+        let quill = new Quill(`#editor${i}`, {
             modules: {
                 toolbar: `#toolbar${i}`
             }
@@ -246,8 +271,8 @@ let colorLetra;
 actualizarListenersBotones();
 /* Llamamos a actualizarQuill() para que agrege todos los editores necesarios */
 actualizarQuill();
-
 /* Creamos los eventos para crear las notas de distintos colores. */
+
 for (let i = 1; i <= 5; i++){
     document.getElementById(`botonPrincipal${i}`).addEventListener("click", function(e) {
         color = i;

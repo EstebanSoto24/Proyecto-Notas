@@ -79,7 +79,24 @@
     </header>
 
     <main id="contenedor-main">
-        <div class="notas color1" id="nota1">
+        <div class="notas color1" id="nota0">
+            <div id="toolbar0" class="toolbarEditor">
+                <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
+                <button class="ql-italic"><img src="assets/svg/italic.svg"></button>
+                <button class="ql-underline"><img src="assets/svg/underline.svg"></button>
+                <button class="ql-align" onclick="alignTexto(this)"><img src="assets/svg/align.svg"></button>
+                <button class="ql-list"><img src="assets/svg/list.svg"></button>
+            </div>
+            <div name="editor" class="textoNota" id="editor0">
+                <p>Hello World!!</p>
+            </div>
+            <section class="botonesNota">
+                <button class="borrar" id="borrar0"><svg><use href="#svgBorrar"></use></svg></button>
+                <button class="descargar" id="descargar0"><svg><use href="#svgDescargar"></use></svg></button>
+                <button class="guardar" id="guardar0"><svg><use href="#svgGuardar"></use></svg></button>
+            </section>
+        </div>
+        <div class="notas color4" id="nota1">
             <div id="toolbar1" class="toolbarEditor">
                 <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
                 <button class="ql-italic"><img src="assets/svg/italic.svg"></button>
@@ -87,30 +104,13 @@
                 <button class="ql-align" onclick="alignTexto(this)"><img src="assets/svg/align.svg"></button>
                 <button class="ql-list"><img src="assets/svg/list.svg"></button>
             </div>
-            <div name="editor" class="textoNota" id="editor1">
+            <div class="textoNota" id="editor1">
                 <p>Hello World!!</p>
             </div>
             <section class="botonesNota">
                 <button class="borrar" id="borrar1"><svg><use href="#svgBorrar"></use></svg></button>
-                <button class="descargar" id="descargar"><svg><use href="#svgDescargar"></use></svg></button>
-                <button class="guardar" id="guardar"><svg><use href="#svgGuardar"></use></svg></button>
-            </section>
-        </div>
-        <div class="notas color4" id="nota2">
-            <div id="toolbar2" class="toolbarEditor">
-                <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
-                <button class="ql-italic"><img src="assets/svg/italic.svg"></button>
-                <button class="ql-underline"><img src="assets/svg/underline.svg"></button>
-                <button class="ql-align" onclick="alignTexto(this)"><img src="assets/svg/align.svg"></button>
-                <button class="ql-list"><img src="assets/svg/list.svg"></button>
-            </div>
-            <div class="textoNota" id="editor2">
-                <p>Hello World!!</p>
-            </div>
-            <section class="botonesNota">
-                <button class="borrar" id="borrar2"><svg><use href="#svgBorrar"></use></svg></button>
-                <button class="descargar" id="descargar2"><svg><use href="#svgDescargar"></use></svg></button>
-                <button class="guardar" id="guardar2"><svg><use href="#svgGuardar"></use></svg></button>
+                <button class="descargar" id="descargar1"><svg><use href="#svgDescargar"></use></svg></button>
+                <button class="guardar" id="guardar1"><svg><use href="#svgGuardar"></use></svg></button>
             </section>
         </div>
     </main>
