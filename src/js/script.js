@@ -9,7 +9,6 @@ function actualizarQuill(cuantasnotas){
     }
 }
     */
-const quill = new Quill('#editor');
 
 /* Creamos funcion para agregar una nota */
 function agregarNota(e) {
@@ -22,11 +21,24 @@ function agregarNota(e) {
 
     const svgNS = "http://www.w3.org/2000/svg";
     /* Creamos las etiquetas */
+    /* contenedor_main */
     let main = document.getElementById("contenedor-main");
+    /* Toolbar */
+    let toolbar = document.createElement("div");
+    let buttonEditor1 = document.createElement("button");
+    let buttonEditor2 = document.createElement("button");
+    let buttonEditor3 = document.createElement("button");
+    let imgButtonEditor1 = document.createElement("img");
+    let imgButtonEditor2 = document.createElement("img");
+    let imgButtonEditor3 = document.createElement("img");
+    /* Tarjeta */
     let tarjeta = document.createElement("div");
-    let div = document.createElement("div");                            
+    /* textarea Editable */
+    let div = document.createElement("div");
+    let editor = document.createElement("div");         
     let contenido = document.createTextNode("Hello World!!!");
-    let texto = document.createElement("p") ;
+    let texto = document.createElement("p");
+    /* Botones eliminar guardar descargar. */
     let section = document.createElement("section");
     let button1 = document.createElement("button");
     let button2 = document.createElement("button");
@@ -37,7 +49,6 @@ function agregarNota(e) {
     let usebutton1 = document.createElementNS(svgNS, "use");
     let usebutton2 = document.createElementNS(svgNS, "use");
     let usebutton3 = document.createElementNS(svgNS, "use");
-
 
     /* Ponemos bgcolor a la etiqueta */
     switch (color){
@@ -59,11 +70,27 @@ function agregarNota(e) {
     }
 
     /* Asignamos y creamos los atributos de los elementos */
+    /* Tarjeta */
     tarjeta.classList.add('notas');
     tarjeta.classList.add(`${classcolor}`);
     tarjeta.setAttribute("id", `nota${idNuevaNota}`);
+    /* Toolbar */
+    toolbar.classList.add('toolbarEditor');
+    toolbar.classList.add('ql-toolbar');
+    toolbar.setAttribute("id", `toolbar${idNuevaNota}`);
+    buttonEditor1.classList.add('ql-bold');
+    imgButtonEditor1.src = "assets/svg/bold.svg";
+    buttonEditor2.classList.add('ql-italic');
+    imgButtonEditor2.src = "assets/svg/italic.svg";
+    buttonEditor3.classList.add('ql-underline');
+    imgButtonEditor3.src = "assets/svg/underline.svg";
     div.classList.add('textoNota');
-    div.id = `textoNotaId${idNuevaNota}`;
+    div.classList.add('ql-container');
+    div.id = `editor${idNuevaNota}`;
+    /* Editor de texto */
+    editor.classList.add('ql-editor');
+    editor.setAttribute("contenteditable", "true");
+    /* Botones Eliminar, Guardar, Descargar. */
     section.classList.add('botonesNota');
     button1.setAttribute("id", `borrar${idNuevaNota}`);
     button1.classList.add('borrar');
@@ -76,6 +103,14 @@ function agregarNota(e) {
     usebutton3.setAttribute("href", "#svgGuardar");
 
     /* Unimos todo */
+    /* Toolbar */
+    buttonEditor1.appendChild(imgButtonEditor1);
+    buttonEditor2.appendChild(imgButtonEditor2);
+    buttonEditor3.appendChild(imgButtonEditor3);
+    toolbar.appendChild(buttonEditor1);
+    toolbar.appendChild(buttonEditor2);
+    toolbar.appendChild(buttonEditor3);
+    /* Botones Nota */
     svgbutton1.appendChild(usebutton1);
     svgbutton2.appendChild(usebutton2);
     svgbutton3.appendChild(usebutton3);
@@ -86,13 +121,16 @@ function agregarNota(e) {
     section.appendChild(button2);
     section.appendChild(button3);
     texto.appendChild(contenido);
-    div.appendChild(texto);
+    editor.appendChild(texto);
+    div.appendChild(editor);
+    /* Tarjeta */
+    tarjeta.appendChild(toolbar);
     tarjeta.appendChild(div);
     tarjeta.appendChild(section);
     main.appendChild(tarjeta);
 
     /* Llamamos a la función de actualizar Quill para hacerlo en las notas nuevas */
-    actualizarQuill(idNuevaNota);
+    actualizarQuill();
 }
 /* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
 function borrarNota(identificador) {
@@ -117,11 +155,11 @@ function actualizarListenersBotones(){
         });
     }
 }
-function cambiarTextarea(){
-    let textareas = document.getElementsByTagName('textoNota');
-    for (let i in textareas){
-        textareas[i].setAttribute("style", `font-size: ${tamannoLetra}; font-family: ${tipoLetra}`);
-    }
+function cambiarTammanoLetra_TipoLetra_ColorLetra(){
+    let main = document.getElementsByTagName("main")[0];
+    main.style.color = colorLetra;
+    main.style.fontSize =  tamannoLetra+ "px";
+    main.style.fontFamily = tipoLetra;
 };
 function cambiosRealizados(){
     /* Declaramos las etiquetas para crear el popup */
@@ -141,17 +179,30 @@ function cambiosRealizados(){
     setTimeout(() => document.getElementById('cambiosHechos').remove(), 3000);
 
 }
-
+function actualizarQuill(){
+    let cuantos = document.querySelectorAll("#contenedor-main>div").length;
+    for (let i = 1; i <= cuantos; i++){
+        const quill = new Quill(`#editor${i}`, {
+            modules: {
+                toolbar: `#toolbar${i}`
+            }
+        });
+    }
+}
 
 /* Declaración de variables */
 let ventana;
 const ventanaSettings = document.getElementById("ventanaSettings");
 let tamannoLetra = '12px';
 let tipoLetra = 'arial';
+let colorLetra = 'red';
 
 /* Llamamos al actualizador de botones una vez para que se carguen los botones. */
 actualizarListenersBotones();
 /* Llamamos al cambiarTammanoLetra_tipoLetra para tener un tipo y tamaño incial y por defecto*/
+
+/* Llamamos a actualizarQuill() para que agrege todos los editores necesarios */
+actualizarQuill();
 
 /* Creamos los eventos para crear las notas de distintos colores. */
 for (let i = 1; i <= 5; i++){
@@ -168,5 +219,7 @@ document.getElementById("formSettings").addEventListener("submit", function(e) {
     e.preventDefault();
     tipoLetra = document.getElementById('tipoLetra').value;
     tamannoLetra = document.getElementById('tamannoLetra').value;
+    colorLetra = document.querySelector("input[type=color]").value;
     cambiosRealizados();
+    cambiarTammanoLetra_TipoLetra_ColorLetra();
 });

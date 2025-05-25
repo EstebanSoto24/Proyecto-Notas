@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas - Esteban Soto</title>
     <link rel="stylesheet" id="estilos1" href="css/style.css">
+    <link rel="stylesheet" id="estilos1" href="css/style-settings.css">
+    <link rel="stylesheet" id="estilos1" href="css/style-quilljs.css">
     <script defer src="js/script.js"></script>
-    <!--Incluimos el css de QuillJS -->
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <!--Incluimos la libreria de QuillJS -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 </head>
@@ -30,6 +30,9 @@
     <svg style="display: none;"><symbol id="Infojobs"><svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-square-rounded"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9h.01" /><path d="M11 12h1v4h1" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /></svg></symbol></svg>
     <!---Cerrar-->
     <svg style="display: none;"><symbol id="cerrar"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrows-minimize"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 9l4 0l0 -4" /><path d="M3 3l6 6" /><path d="M5 15l4 0l0 4" /><path d="M3 21l6 -6" /><path d="M19 9l-4 0l0 -4" /><path d="M15 9l6 -6" /><path d="M19 15l-4 0l0 4" /><path d="M15 15l6 6" /></svg></symbol></svg>
+    <!--BOLD-->
+    <svg style="display: none"><symbol id="bold"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bold"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" /><path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" /></svg></symbol></svg>
+
     <div id="ventanaSettings" popover>
         <section>
             <button id="buttonCerrarSettings" popovertarget="ventanaSettings" popovertargetaction="hide">&times;</button>
@@ -37,17 +40,19 @@
             <form id="formSettings" method="get">
                 <label for="tipoLetra">Tipo de letra</label>
                 <select id="tipoLetra">
-                    <option value="arial" name="night">Arial</option>
-                    <option value="sans-serif" name="day">Sans-serif</option>
+                    <option value="arial" name="arial">Arial</option>
+                    <option value="sans-serif" name="sans-serif">Sans-serif</option>
                 </select><br>
                 <label for="tamannoLetra">Tamaño de letra</label>
                 <select id="tamannoLetra">
-                    <option value="12px" name="tamannoLetra">12px</option>
-                    <option value="14px" name="tamannoLetra">14px</option>
-                    <option value="16px" name="tamannoLetra">16px</option>
-                    <option value="20px" name="tamannoLetra">20px</option>
-                    <option value="24px" name="tamannoLetra">24px</option>
-                </select>
+                    <option value="12" name="tamannoLetra">12px</option>
+                    <option value="14" name="tamannoLetra">14px</option>
+                    <option value="16" name="tamannoLetra">16px</option>
+                    <option value="20" name="tamannoLetra">20px</option>
+                    <option value="24" name="tamannoLetra">24px</option>
+                </select><br>
+                <label for="colorLetra">Color de Letra</label>
+                <input type="color">
                 <!-- Proximas Actualizaciones
                 <label id="temas">Tema</label>
                 <input type="radio" name="temas" value="nightMode">
@@ -75,8 +80,28 @@
 
     <main id="contenedor-main">
         <div class="notas color1" id="nota1">
-            <div class="textoNota" id="editor">
-                <p>Hello World !!!</p>
+            <div id="toolbar1" class="toolbarEditor">
+                <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
+                <button class="ql-italic"><img src="assets/svg/italic.svg"></button>
+                <button class="ql-underline"><img src="assets/svg/underline.svg"></button>
+            </div>
+            <div class="textoNota" id="editor1">
+                <p>Hello World!!</p>
+            </div>
+            <section class="botonesNota">
+                <button class="borrar" id="borrar1"><svg><use href="#svgBorrar"></use></svg></button>
+                <button class="descargar" id="descargar"><svg><use href="#svgDescargar"></use></svg></button>
+                <button class="guardar" id="guardar"><svg><use href="#svgGuardar"></use></svg></button>
+            </section>
+        </div>
+        <div class="notas color4" id="nota2">
+            <div id="toolbar2" class="toolbarEditor">
+                <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
+                <button class="ql-italic"><img src="assets/svg/italic.svg"></button>
+                <button class="ql-underline"><img src="assets/svg/underline.svg"></button>
+            </div>
+            <div class="textoNota" id="editor2">
+                <p>Hello World!!</p>
             </div>
             <section class="botonesNota">
                 <button class="borrar" id="borrar1"><svg><use href="#svgBorrar"></use></svg></button>

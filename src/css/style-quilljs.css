@@ -1,0 +1,56 @@
+.toolbarEditor {
+    height: 30px;
+    margin-top: 10px;
+    width: 320px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+}
+
+
+.toolbarEditor button {
+    margin-top: 0px;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+}
+
+.textoNota {
+    width: 320px;
+    height: 170px;
+    border: none;
+}
+
+.ql-editor {
+    width: 320px;
+    height: 190px;
+    margin: 0px;
+    margin-top: -15px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.ql-editor p {
+    margin: 10px;
+}
+
+.ql-editor::-webkit-scrollbar{
+    width: 10px;
+}
+
+.ql-editor::-webkit-scrollbar-track{
+    height: 50px;
+    padding: 10px;
+    background-color: transparent;
+    padding-right: 100px;
+    box-sizing: content-box;
+}
+
+.ql-editor::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background-color: rgb(226, 226, 226);
+    border: 1px solid lightblue;
+}
+
+/* Botones del toolbar */

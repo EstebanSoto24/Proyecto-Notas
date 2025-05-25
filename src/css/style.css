@@ -8,6 +8,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 16px;
+    color: black;
 }
 
 h1 {
@@ -120,45 +122,59 @@ main div{
 }
 
 /* --------------------------------- Nota ------------------------------*/
-.textoNota {
-    background-color: white;
+/* Proximas actualizaciones
+.tituloNotas {
+    position: fixed;
     width: 320px;
-    height: 200px;
+    height: 50px;
+    text-align: center;
+    border: none;
+    margin-top: -44px;
+    z-index: 0;
+    animation: slide 0.5s ease-in;
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(50px);
+    }
+}
+*/
+
+.tituloNotas input {
+    margin-top: 7px;
+    height: 30px;
     border-radius: 10px;
+    text-align: center;
 }
 
-.textoNota p {
-    font-size: 20px;
-    padding: 10px;
-}
-
-.color1 .textoNota:focus {
+.color1 .ql-editor:focus {
     box-shadow: 0px 0px 10px 1px black;
-    border: 3px dotted lightcoral;
+    border: 2px dotted lightcoral;
     outline: none;
 }
 
-.color2 .textoNota:focus {
+.color2 .ql-editor:focus {
     box-shadow: 0px 0px 10px 1px black;
-    border: 3px dotted lightblue;
+    border: 2px dotted lightblue;
     outline: none;
 }
 
-.color3 .textoNota:focus {
+.color3 .ql-editor:focus {
     box-shadow: 0px 0px 10px 1px black;
-    border: 3px dotted rgb(255, 255, 137);
+    border: 2px dotted rgb(255, 255, 137);
     outline: none;
 }
 
-.color4 .textoNota:focus {
+.color4 .ql-editor:focus {
     box-shadow: 0px 0px 10px 1px black;
-    border: 3px dotted lightsalmon;
+    border: 2px dotted lightsalmon;
     outline: none;
 }
 
-.color5 .textoNota:focus {
+.color5 .ql-editor:focus {
     box-shadow: 0px 0px 10px 1px black;
-    border: 3px dotted lightseagreen;
+    border: 2px dotted lightseagreen;
     outline: none;
 }
 /* ---------------------------------------------------------- BOTONES ---------------------------------------------------- */
@@ -235,6 +251,7 @@ button {
 .botonesNota {
     display: flex;
     justify-content: space-between;
+    margin-top: 35px;
 }
 
 .borrar {
@@ -275,125 +292,20 @@ button {
     color: green;
 }
 
-/* ------------------Botones Ventana Settings------------------- */
-#buttonCerrarSettings{
-    align-self: flex-end;
-    margin: -55px 0px 0px 0px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    z-index:51;
-    font-size: 35px;
-}
-
-
-#buttonGuardarSettings{
-    align-self: flex-end;
-    position: relative;
-    top: 40px;
-    margin-top: 20px;
-}
-
-/* --------------------- Popup Cambios Realizados ---------------------*/
-#cambiosHechos {
-    position: fixed;
-    top: 50px;
-    align-self: center;
-    width: 250px;
-    background-color:  rgb(97, 124, 255);
-    border: 2px solid white;
-    border-radius:10px;
-    color: white;
-    z-index: 60;
-    text-align: center;
-    font-weight: bold;
-    box-shadow:
-    0 0 10px #ffffff,  /* Brillo externo */
-    0 0 20px #ffffff,  /* Brillo más difuso */
-    0 0 30px rgb(255, 255, 255), /* Efecto neón */
-    inset 0 0 10px rgb(255, 255, 255);
-    animation: slide 0.5s ease-out, slideout 0.5s reverse 2s forwards;
-}
-
-@keyframes slideout {
-    from {
-        transform: translateY(-150px);
-    }
-}
-
-@keyframes slide {
-    from {
-        transform: translateY(-150px);
-    }
-}
-
-/* ----------------Ventana de ajustes (ajustar-tema, tipo-letra, tamaño-letra)---------------- */
-
-#ventanaSettings {
-    position: fixed;
-    background-color: rgb(97, 124, 255);
-    width: 40%;
-    height: 290px;
-    z-index: 50;
-    border: 2px solid white;
-    box-shadow: 
-    0 0 10px #ffffff,  /* Brillo externo */
-    0 0 20px #ffffff,  /* Brillo más difuso */
-    0 0 30px rgb(255, 255, 255), /* Efecto neón */
-    inset 0 0 10px rgb(255, 255, 255);
-    border-radius: 20px;
-    color: white;
-    overflow: hidden;
-}
-
-#ventanaSettings section {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-#ventanaSettings h2 {
-    position: absolute;
-    top: 0;
-    text-align: center;
-    margin-top: 10px;
-    width: 100%;
-    font-style: italic;
-    font-weight: 900;
-    color: white;
-    font-size: 40px;
-}
-
-#ventanaSettings form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#ventanaSettings label {
-    font-size: 20px;
-}
-
-#ventanaSettings select {
-    width: 100px;
-}
-
 /* ---------- MediaQuerys ----------------*/
 
 /* ------- Ventana Settings -----*/
-@media only screen and (max-width: 600px) {
-    #ventanaSettings h2 {
-        font-size: 30px;
-        text-align: left;
-        margin: 15px 0px 0px 30px;
+@media only screen and (max-width: 440px) {
+    #ventanaSettings {
+       width: 250px;
     }
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 650px){
     #ventanaSettings {
-       width: 200px;
+        margin-left: 130px;
+    }
+    #ventanaSettings section {
+        position: relative;
     }
 }
