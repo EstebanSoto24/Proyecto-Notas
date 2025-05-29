@@ -1,4 +1,8 @@
 // Inicializamos todos los arrays neceesarios.
+let tarjetas = [
+    {idTarjeta: "teban", textoEditor: "Hola Buenas <strong>Tardes <em>Amigo</em></strong></p>", color: 3, borrar: true, descargar: true, guardar: true},
+    {idTarjeta: "teban1", textoEditor: "Hola Buenas <strong>Tardes <em>Amigo</em></strong>", color: 4, borrar: true, descargar: true, guardar: true},
+];
 let quillInstances = [];
 let escuchaBorrar = [];
 let escuchaDescargar = [];
@@ -10,28 +14,50 @@ function cerrarPopupNombre(){
 function cerrarNombre() {
     document.getElementById('alerta').style.display = 'none';
     let titulo = document.getElementsByName("titulo")[0];
-    let idTarjeta = titulo.value
-    if (idTarjeta == "" || idTarjeta.includes(" ")){
+    let identificadorTarjeta = titulo.value;
+    let letrasYNumeros = /^[A-Za-z0-9+$]/.test(identificadorTarjeta);
+    if (identificadorTarjeta == "" || identificadorTarjeta.includes(" ") || Number(identificadorTarjeta) || letrasYNumeros == false){
         document.getElementById('alerta').style.display = 'flex';
         falloRealizado();
     }else {
-        let nombreTarjeta = titulo.value;
-        titulo.value = "";
-        agregarNota(nombreTarjeta);
+        let bien = 0;
+        for (let i in tarjetas){
+            let comprobar = tarjetas[i].idTarjeta;
+            if (comprobar == identificadorTarjeta){
+                document.getElementById('alerta').style.display = 'flex';
+                falloMismoId();
+                bien = 1;
+            }
+        }
+        if (bien == 0){
+            let nombreTarjeta = titulo.value;
+            titulo.value = "";
+            let textoPorDefecto = document.createTextNode("Hola mundo!!");
+            let etiquetaTextoPorDefecto = document.createElement("p");
+
+            let tarjetaNueva = {idTarjeta: nombreTarjeta, textoEditor: textoPorDefecto, color: color, borrar: false, descargar: false, guardar: false};
+
+            tarjetas.push(tarjetaNueva);
+            console.log(tarjetas);
+            etiquetaTextoPorDefecto.appendChild(textoPorDefecto);
+            agregarNota(nombreTarjeta, etiquetaTextoPorDefecto, color);
+        }
     }
 }
 /* Creamos funcion para agregar una nota */
 function abrirNombre(){
     document.getElementById('alerta').style.display = 'flex';
 }
-function agregarNota(nombreTarjeta) {
+function agregarNota(nombreTarjeta, textoDentroEditor, color) {
     /* Configuracion de Identificadores para las notas*/
-    let numerodiv = document.querySelectorAll("main>div");
+    let idNuevaNota = nombreTarjeta;
 
-    let notas = numerodiv.length;
-
-    let idNuevaNota = notas;
-
+    let indice = tarjetas.findIndex(tarjeta => tarjeta.idTarjeta == nombreTarjeta);
+    tarjetas[indice].borrar = false;
+    tarjetas[indice].descargar = false;
+    tarjetas[indice].guardar = false;
+    let classcolor;
+    /* Introcimos nuevo objeto al array de las notas */
     const svgNS = "http://www.w3.org/2000/svg";
     /* Creamos las etiquetas */
     /* contenedor_main */
@@ -40,7 +66,7 @@ function agregarNota(nombreTarjeta) {
     let textoTitulo = document.createTextNode(nombreTarjeta);
     let titulo = document.createElement("h3");
     /* Toolbar */
-    let toolbar = document.createElement("div");
+    let toolbar = document.createElement("section");
     let buttonEditor1 = document.createElement("button");
     let buttonEditor2 = document.createElement("button");
     let buttonEditor3 = document.createElement("button");
@@ -53,11 +79,11 @@ function agregarNota(nombreTarjeta) {
     let imgButtonEditor5 = document.createElement("img");
     /* Tarjeta */
     let tarjeta = document.createElement("div");
-    /* textarea Editable */
+    /* div Editable */
     let div = document.createElement("div");
-    let editor = document.createElement("div");         
-    let contenido = document.createTextNode("Hello World!!!");
+    let editor = document.createElement("div");
     let texto = document.createElement("p");
+    texto.innerHTML = textoDentroEditor.innerHTML;
     /* Botones eliminar guardar descargar. */
     let section = document.createElement("section");
     let button1 = document.createElement("button");
@@ -93,7 +119,7 @@ function agregarNota(nombreTarjeta) {
     /* Tarjeta */
     tarjeta.classList.add('notas');
     tarjeta.classList.add(`${classcolor}`);
-    tarjeta.setAttribute("id", `nota${idNuevaNota}`);
+    tarjeta.setAttribute("id", `${idNuevaNota}`);
     /* Titulo */
     titulo.classList.add('titulo');
     /* Toolbar */
@@ -153,7 +179,6 @@ function agregarNota(nombreTarjeta) {
     section.appendChild(button1);
     section.appendChild(button2);
     section.appendChild(button3);
-    texto.appendChild(contenido);
     editor.appendChild(texto);
     div.appendChild(editor);
     /* Tarjeta */
@@ -164,27 +189,30 @@ function agregarNota(nombreTarjeta) {
     main.appendChild(tarjeta);
 
     /* Llamamos a la función de actualizar Quill para hacerlo en las notas nuevas */
-    actualizarListenersBotones();
     actualizarQuill();
+    actualizarListenersBotones();
+}
+function agregarNotasGuardadas(){
+    for (let i in tarjetas) {
+        let nombreTarjeta = tarjetas[i].idTarjeta;
+        let texto = tarjetas[i].textoEditor;
+        let colorTarjeta = tarjetas[i].color;
+        let textoDentroEditor = document.createElement("p");    
+        
+        textoDentroEditor.innerHTML = texto;
+        agregarNota(nombreTarjeta, textoDentroEditor, colorTarjeta);
+    }
 }
 /* Creamos función para eliminar una nota, posteriormente pondre un aviso*/
 function borrarNota(id) {
     let padre = document.getElementById(id).closest(".notas");
-    
-
-    let indice = Number(id.substring(6));
-    
-
-    alert(escuchaBorrar);
-    
-    alert(indice);
-    actualizarIds();
-    actualizarListenersBotones();
-    actualizarQuill();
-    escuchaBorrar[indice] = false;
-    
+    let idPadre = padre.id;
+    let indice = tarjetas.findIndex(tarjeta => tarjeta.idTarjeta == `${idPadre}`);
+    tarjetas.splice(indice, 5);
     
     padre.remove();
+    actualizarListenersBotones();
+    actualizarQuill();
 }
 /* Creamos función para guardar la nota en la base de datos si hemos iniciado sesion*/
 function guardarNota() {
@@ -219,40 +247,41 @@ function descargarNota(identificador) {
 }
 /* Creamos funcion para actualizar todos los botones de la pagina */
 function actualizarListenersBotones(){
-    let cont = document.querySelectorAll("main>div").length;
-
-    for (let i = 0; i < cont; i++){
-        if (escuchaBorrar[i] == true){
+    for (let i in tarjetas){
+        let escuchaBorrar = tarjetas[i].borrar;
+        if (escuchaBorrar == true){
             
         }else{
-            document.getElementById(`borrar${i}`).addEventListener('click', function(e) {
+            document.getElementById(`borrar${tarjetas[i].idTarjeta}`).addEventListener('click', function(e) {
                 let identificador = e.currentTarget.id;
                 borrarNota(identificador);
             });
         }
-        escuchaBorrar[i] = true;
+        tarjetas[i].borrar = true;
     }
-    for (let i = 0; i < cont; i++){
-        if (escuchaDescargar[i] == true){
+    for (let i in tarjetas){
+        let escuchaDescargar = tarjetas[i].descargar;
+        if (escuchaDescargar == true){
             
         }else{
-            document.getElementById(`descargar${i}`).addEventListener('click', function(e) {
+            document.getElementById(`descargar${tarjetas[i].idTarjeta}`).addEventListener('click', function(e) {
                 let identificador = e.currentTarget.id;
-                alert(identificador);
+                descargarNota(identificador);
             });
         }
-        escuchaDescargar[i] = true;
+        tarjetas[i].descargar = true;
     }
-    for (let i = 0; i < cont; i++){
-        if (escuchaGuardar[i] == true){
+    for (let i in tarjetas){
+        let escuchaGuardar = tarjetas[i].guardar;
+        if (escuchaGuardar == true){
             
         }else{
-            document.getElementById(`guardar${i}`).addEventListener('click', function(e) {
+            document.getElementById(`guardar${tarjetas[i].idTarjeta}`).addEventListener('click', function(e) {
                 let identificador = e.currentTarget.id;
-                alert(identificador);
+                guardarNota(identificador);
             });
         }
-        escuchaGuardar[i] = true;
+        tarjetas[i].guardar = true;
     }
 }
 function cambiarTammanoLetra_TipoLetra_ColorLetra(){
@@ -297,16 +326,23 @@ function falloRealizado(){
     setTimeout(() => document.getElementById('fallo').remove(), 3000);
 
 }
-function actualizarIds(){
-    let tarjetas = document.querySelectorAll("main>div");
+function falloMismoId(){
+    /* Declaramos las etiquetas para crear el popup */
+    let divCambio = document.createElement("div");
+    let pCambio = document.createElement("p");
+    let textoCambio = document.createTextNode("No puedes agregar dos notas con el mismo nombre");
 
-    for (let i = 0; i < tarjetas.length; i++){
-        tarjetas[i].id = `nota${i}`;
-        let section = tarjetas[i].querySelector('.botonesNota');
-        section.querySelector('.borrar').id = `borrar${i}`;
-        section.querySelector('.descargar').id = `descargar${i}`;
-        section.querySelector('.guardar').id = `guardar${i}`;
-    }
+    /* Creamos Atributos */
+    divCambio.setAttribute("id", 'fallo');
+
+    /* Hacemos las conexiones y lo agregamos al html */
+    pCambio.appendChild(textoCambio);
+    divCambio.appendChild(pCambio);
+    document.body.appendChild(divCambio);
+
+    /* Aqui esperamos un momento para que se muestre el popup y lo borramos */
+    setTimeout(() => document.getElementById('fallo').remove(), 3000);
+
 }
 function actualizarQuill(){
     quillInstances = []; // Limpiamos las instancias Quill Anteriores.
@@ -317,12 +353,12 @@ function actualizarQuill(){
         const toolbar = tarjeta.querySelector(".toolbarEditor");
         const editor = tarjeta.querySelector('.textoNota');
 
-        toolbar.id = `toolbar${i}`;
-        editor.id = `editor${i}`;
+        let editorId = editor.id;
+        let toolbarId = toolbar.id;
 
-        let quill = new Quill(`#editor${i}`, {
+        let quill = new Quill(`#${editorId}`, {
             modules: {
-                toolbar: `#toolbar${i}`
+                toolbar: `#${toolbarId}`
             }
         });
         quillInstances.push(quill);
@@ -351,7 +387,7 @@ let tipoLetra = 'arial';
 let colorLetra;
 
 /* Llamamos al actualizador de botones una vez para que se carguen los botones. */
-actualizarListenersBotones();
+agregarNotasGuardadas();
 /* Llamamos a actualizarQuill() para que agrege todos los editores necesarios */
 actualizarQuill();
 /* Creamos los eventos para crear las notas de distintos colores. */
@@ -359,12 +395,11 @@ actualizarQuill();
 for (let i = 1; i <= 5; i++){
     document.getElementById(`botonPrincipal${i}`).addEventListener("click", function(e) {
         color = i;
-        abrirNombre();
+        abrirNombre(color);
         actualizarListenersBotones();
     });
 }
 /* Obtenemos todo el formulario de Settings */
-
 document.getElementById("formSettings").addEventListener("submit", function(e) {
     e.preventDefault();
     tipoLetra = document.getElementById('tipoLetra').value;

@@ -1,0 +1,140 @@
+body {
+    font-family: arial;
+}
+
+#cajaLogin{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 50;
+}
+
+#cajaCreateAccount{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 50;
+}
+#cajaLogin h2, #cajaCreateAccount h2{
+    margin-top: -5px;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+#cajaLogin div{
+    position: relative;
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+    height: 270px;
+    text-align: center;
+}
+
+#cajaLogin form, #cajaCreateAccount form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 50px 0px 50px;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+#cajaLogin input, #cajaCreateAccount input{
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px 0px 10px 0px;
+    padding: 10px;
+    width: 300px;
+    height: 30px;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+#cajaLogin input:focus, #cajaCreateAccount input:focus{
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px 5px rgb(97, 124, 255);
+}
+
+
+
+#cajaLogin button, #cajaCreateAccount button{
+    position: absolute;
+    bottom: 36px;
+    left: 70px;
+    font-size: 20px;
+    margin-top: 20px;
+    border: none;
+    width: 270px;
+    height: 40px;
+    background-color: rgb(97, 124, 255);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cajaLogin button:hover #cajaLogin{
+    background-color: rgb(52, 85, 251);
+}
+
+/* CAJA DE CREATE ACCOUNT */
+#cajaCreateAccount div{
+    position: relative;
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+    height: 350px;
+    text-align: center;
+}
+
+/* BOTONES CREATE ACOUNT Y LOGIN */
+
+#createAccount {
+    position: absolute;
+    z-index: 100;
+    margin: 20px 0px 0px 30px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    z-index: 100;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    background-color: rgb(97, 124, 255);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+#login {
+    position: absolute;
+    right: 30px;
+    margin: 20px 0px 0px 0px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    z-index: 100;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    background-color: rgb(97, 124, 255);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+}
+

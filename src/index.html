@@ -39,10 +39,8 @@
         <div class="modal">
             <button id="buttonCerrarTitulo" onclick="cerrarPopupNombre()">&times;</button>
             <h2>TITULO DE NOTA</h2>
-            <form>
-                <input type="text" name="titulo" placeholder="Escriba el titulo">
-                <button type="button" id="buttonAceptarTitulo" onclick="cerrarNombre()">Aceptar</button>
-            </form>
+            <input type="text" autocomplete="off" name="titulo" placeholder="Escriba el titulo">
+            <button type="button" id="buttonAceptarTitulo" onclick="cerrarNombre()">Aceptar</button>
         </div>
     </div>
 
@@ -51,12 +49,12 @@
             <button id="buttonCerrarSettings" popovertarget="ventanaSettings" popovertargetaction="hide">&times;</button>
             <h2>Settings</h2>
             <form id="formSettings" method="get">
-                <label for="tipoLetra">Tipo de letra</label>
+                <label>Tipo de letra</label>
                 <select id="tipoLetra">
                     <option value="arial" name="arial">Arial</option>
                     <option value="sans-serif" name="sans-serif">Sans-serif</option>
                 </select><br>
-                <label for="tamannoLetra">Tamaño de letra</label>
+                <label>Tamaño de letra</label>
                 <select id="tamannoLetra">
                     <option value="12" name="tamannoLetra">12px</option>
                     <option value="14" name="tamannoLetra">14px</option>
@@ -64,7 +62,7 @@
                     <option value="20" name="tamannoLetra">20px</option>
                     <option value="24" name="tamannoLetra">24px</option>
                 </select><br>
-                <label for="colorLetra">Color de Letra</label>
+                <label>Color de Letra</label>
                 <input type="color">
                 <!-- Proximas Actualizaciones
                 <label id="temas">Tema</label>
@@ -84,7 +82,7 @@
                 <button class="botonesPrincipales" id="botonPrincipal3">+</button>
                 <button class="botonesPrincipales" id="botonPrincipal4">+</button>
                 <button class="botonesPrincipales" id="botonPrincipal5">+</button>
-                <button class="botonesConfiguracion" id="botonLogin"><svg><use href="#Login"></use></svg></button>
+                <button class="botonesConfiguracion" id="botonLogin"><a href="login.html"><svg><use href="#Login"></use></svg></a></button>
                 <button popovertarget="ventanaSettings" class="botonesConfiguracion" id="botonSettings"><svg><use href="#buttonSettings"></use></svg></button>
                 <button class="botonesConfiguracion" id="botonLogout"><svg><use href="#Logout"></use></svg></button>
             </section>
@@ -92,6 +90,7 @@
     </header>
 
     <main id="contenedor-main">
+        <!--
             <div class="notas color1" id="nota0">
                 <h3 class="titulo">Hola buenas</h3>
                 <section id="toolbar0" class="toolbarEditor">
@@ -110,7 +109,7 @@
                     <button class="guardar" id="guardar0"><svg><use href="#svgGuardar"></use></svg></button>
                 </section>
             </div>
-        <!--
+        
         <div class="notas color4" id="nota1">
             <div id="toolbar1" class="toolbarEditor">
                 <button class="ql-bold"><img src="assets/svg/bold.svg"></button>
