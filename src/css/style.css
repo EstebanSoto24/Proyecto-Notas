@@ -17,13 +17,17 @@ h1 {
     width: 100%;
     text-align: center;
     z-index: 10;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 0px;
     padding: 10px 0;
     font-style: italic;
     font-weight: 900;
     color: darkcyan;
     font-size: 40px;
+}
+
+h3 {
+    font-size: 20px;
 }
 nav {
     position: fixed;
@@ -85,6 +89,7 @@ svg {
 /* -------------------------------------------- CONTENEDOR PRINCIPAL (NOTAS) ---------------------------------------*/
 main {
     margin-left: 110px;
+    margin-top: 25px;
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -178,6 +183,69 @@ main div{
     border: 2px dotted lightseagreen;
     outline: none;
 }
+
+/* -----------------TITULO ---------------*/
+.color1 .titulo {
+    text-align: center;
+    margin: -33px 0px 20px 5px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px lightcoral;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px 4px lightcoral;
+    width: 70%;
+    background-color: transparent;
+}
+
+.color2 .titulo {
+    text-align: center;
+    margin: -33px 0px 20px 5px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px lightblue;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px 4px lightblue;
+    width: 70%;
+    background-color: transparent;
+}
+
+.color3 .titulo {
+    text-align: center;
+    margin: -33px 0px 20px 5px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px lightyellow;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px 4px lightyellow;
+    width: 70%;
+    background-color: transparent;
+}
+
+.color4 .titulo {
+    text-align: center;
+    margin: -33px 0px 20px 5px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px lightsalmon;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px 4px lightsalmon;
+    width: 70%;
+    background-color: transparent;
+}
+
+.color5 .titulo {
+    text-align: center;
+    margin: -33px 0px 20px 5px;
+    padding: 0px;
+    text-shadow: 1px 1px 1px lightseagreen;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px 4px lightseagreen;
+    width: 70%;
+    background-color: transparent;
+}
+
+
 /* ---------------------------------------------------------- BOTONES ---------------------------------------------------- */
 /* -----------------Botones barra navegacion-----------------*/
 #botonLogin {

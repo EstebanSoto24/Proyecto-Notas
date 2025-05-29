@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alerta Bonita</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    /* Fondo oscuro */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    /* Contenedor de la alerta */
+    .modal {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="mostrarAlerta()">Mostrar alerta</button>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="alerta">
+    <div class="modal">
+      <h2>¡Hola!</h2>
+      <p>Este es un <strong>alert</strong> bonito hecho a mano ✨</p>
+      <button onclick="cerrarAlerta()">Aceptar</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarAlerta() {
+      document.getElementById('alerta').style.display = 'flex';
+    }
+
+    function cerrarAlerta() {
+      document.getElementById('alerta').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
